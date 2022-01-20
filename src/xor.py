@@ -21,12 +21,12 @@ def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
     possible_text_and_key_list = []
     for k in product(range(ord("a"), ord("z") + 1), repeat=key_size):
         string = ""
-        try:
-            for i in xor_decrypt(encrypted_text, list(k)):
+        examined_list = xor_decrypt(encrypted_text, list(k))
+        if len(examined_list) == len(encrypted_text):
+            for i in examined_list:
                 string += chr(i)
-        except TypeError:
-            pass
-        possible_text_and_key_list.append([string,[chr(x) for x in k]])
+            possible_text_and_key_list.append([string, [chr(x) for x in k]])
+
     return possible_text_and_key_list
 
 
