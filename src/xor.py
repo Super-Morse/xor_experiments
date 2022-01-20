@@ -6,9 +6,11 @@ def xor_decrypt(encrypted_text: list[int], key: list[int]) -> list[int]:
     """
 
     text = []
-
+    key_len = len(key)
     for idx,item in enumerate(encrypted_text):
-        text.append(item ^ key[idx % len(key)])
+        if 32 > item > 126:
+            break
+        text.append(item ^ key[idx % key_len])
 
     return text
 
@@ -19,9 +21,11 @@ def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
     possible_text_and_key_list = []
     for k in product(range(ord("a"), ord("z") + 1), repeat=key_size):
         string = ""
-        for i in xor_decrypt(encrypted_text, list(k)):
-            if 32 <= i <= 126:
+        try:
+            for i in xor_decrypt(encrypted_text, list(k)):
                 string += chr(i)
+        except TypeError:
+            pass
         possible_text_and_key_list.append([string,[chr(x) for x in k]])
     return possible_text_and_key_list
 
