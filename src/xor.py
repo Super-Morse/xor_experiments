@@ -20,12 +20,13 @@ def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
     for k in product(range(ord("a"), ord("z") + 1), repeat=key_size):
         string = ""
         for i in xor_decrypt(encrypted_text, list(k)):
-            if chr(i).isalnum or chr(i).punctuation:
+            if 32 <= i <= 126:
                 string += chr(i)
-        possible_text_and_key_list.append([string,list(k)])
+        possible_text_and_key_list.append([string,[chr(x) for x in k]])
     return possible_text_and_key_list
 
 
+with open('encrypted.txt') as file:
+    names = [int(_) for _ in next(file).split(',')]
 
-print(guess_key([24, 24, 26, 30, 28], 2))
-print(chr(121),chr(122))
+print(guess_key(names, 3))
