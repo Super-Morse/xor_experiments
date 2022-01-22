@@ -14,7 +14,7 @@ def xor_decrypt(key: list[int], encrypted_text: list[int] ) -> list[int]:
 
     return text
 
-def guess_key(key_size: int, encrypted_text: list[int]) -> list[list]:
+def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
     """
         Break XOR decryption with brute force to find all possible combinations if decrypted string and a key
     """
@@ -31,4 +31,4 @@ if __name__ == '__main__':
     with open('encrypted.txt') as file:
         encrypted_text = [int(_) for _ in next(file).split(',')]
 
-    print(guess_key(3, encrypted_text))
+    print(guess_key(encrypted_text, 3))
