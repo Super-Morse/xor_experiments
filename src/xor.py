@@ -8,9 +8,10 @@ def xor_decrypt(key: list[int], encrypted_text: list[int] ) -> list[int]:
     text = []
     key_len = len(key)
     for idx,item in enumerate(encrypted_text):
-        if 32 > item > 126:
+        resulting_value = item ^ key[idx % key_len]
+        if resulting_value < 32 or resulting_value > 126:
             break
-        text.append(item ^ key[idx % key_len])
+        text.append(resulting_value)
 
     return text
 
@@ -30,5 +31,5 @@ def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
 if __name__ == '__main__':
     with open('encrypted.txt') as file:
         encrypted_text = [int(_) for _ in next(file).split(',')]
-
+    #print(xor_decrypt([122,122,122] ,encrypted_text))
     print(guess_key(encrypted_text, 3))
