@@ -34,7 +34,3 @@ if __name__ == '__main__':
     #print(xor_decrypt([122,122,122] ,encrypted_text))
     #print(guess_key(encrypted_text, 3))
 
-
-a = 31
-if a < 32 or a > 126:
-    print(a)
