@@ -22,7 +22,7 @@ def guess_key(encrypted_text: list[int], key_size: int) -> list[list]:
     for k in product(range(ord("a"), ord("z") + 1), repeat=key_size):
         decrypted_text = xor_decrypt(encrypted_text, list(k))
         if len(decrypted_text) == len(encrypted_text):
-            possible_text_and_key_list.append([''.join(chr(_) for _ in examined_list), ''.join(chr(_) for _ in k)])
+            possible_text_and_key_list.append([''.join(chr(_) for _ in decrypted_text), ''.join(chr(_) for _ in k)])
 
     return possible_text_and_key_list
 
@@ -31,4 +31,4 @@ if __name__ == '__main__':
     with open('encrypted.txt') as file:
         names = [int(_) for _ in next(file).split(',')]
 
-    print(guess_key(names, 3))
+
