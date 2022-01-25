@@ -1,6 +1,5 @@
-from flask import Flask, request
+from flask import Flask, request, json, jsonify
 from flask_cors import cross_origin
-from flask import json
 from xor import xor_decrypt
 from xor import guess_key
 
@@ -18,8 +17,16 @@ def process_json():
 
         data = request.data
         values = json.loads(data)
-        print(values['text'])
-        print(values['size'])
+        text = values['text']
+        size = int(values['size'])
+        text_list = text.split(',')
+        map_object = map(int, text_list)
+        list_of_integers = list(map_object)
+        response_data = guess_key(list_of_integers, size)
+
+
+        return jsonify(response_data), 200
+
 
 
     return request.method
