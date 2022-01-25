@@ -16,7 +16,11 @@ def process_json():
     if (request.method == 'POST'):
         content_type = request.headers.get('Content-Type')
 
-        print(request.data)
+        data = request.data
+        values = json.loads(data)
+        print(values['text'])
+        print(values['size'])
+
 
     return request.method
     #content_type = request.headers.get('Content-Type')
