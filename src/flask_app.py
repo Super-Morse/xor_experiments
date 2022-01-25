@@ -4,10 +4,6 @@ from xor import guess_key
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
 @app.route('/bruteforce/', methods=['GET', 'POST'])
 @cross_origin()
 def process_json():
