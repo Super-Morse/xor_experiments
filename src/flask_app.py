@@ -12,7 +12,6 @@ def hello_world():
 @cross_origin()
 def process_json():
     if (request.method == 'POST'):
-        content_type = request.headers.get('Content-Type')
 
         data = request.data
         values = json.loads(data)
