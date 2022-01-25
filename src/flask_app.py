@@ -1,6 +1,5 @@
 from flask import Flask, request, json, jsonify
 from flask_cors import cross_origin
-from xor import xor_decrypt
 from xor import guess_key
 
 app = Flask(__name__)
@@ -27,25 +26,6 @@ def process_json():
 
         return jsonify(response_data), 200
 
-
-
-    return request.method
-    #content_type = request.headers.get('Content-Type')
-    #if (content_type == 'application/json'):
-        #json = request.json
-        #return json
-    #else:
-
-#@app.route('/bruteforce/',  methods=['POST'])
-#def make_response():
-#        response=json.dumps(data),
-#        status=200,
-#        mimetype='application/json'
-#    )
-#    return response
-
-def hello_world():
-    return 'Hello World!'
 
 if __name__ == '__main__':
     app.run()
