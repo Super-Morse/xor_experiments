@@ -7,14 +7,11 @@ app = Flask(__name__)
 def bruteforce():
     '''Reply to incoming POST with possible combinations of key and decrypted text found using guess_key function from xor.py'''
 
-    data = request.data
-    values = json.loads(data)
-    text = values['text']
+
+    values = json.loads(request.data)
     size = int(values['size'])
-    text_list = text.split(',')
-    map_object = map(int, text_list)
-    list_of_integers = list(map_object)
-    response_data = guess_key(list_of_integers, size)
+    text_list = list(map(int, values['text'].split(',')))
+    response_data = guess_key(text_list, size)
     resp = make_response(jsonify(response_data), 200)
 
     # This fix CORS issues with different ports between UI and backend
