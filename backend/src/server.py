@@ -10,7 +10,7 @@ def bruteforce():
 
     values = json.loads(request.data)
     size = int(values['size'])
-    text_list = list(map(int, values['text'].split(',')))
+    text_list = [int(_) for _ in values['text'].split(',')]
     response_data = guess_key(text_list, size)
     resp = make_response(jsonify(response_data), 200)
 
