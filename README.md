@@ -51,5 +51,5 @@ The script will automatically perform a progressive search across multiple key l
 
 ---
 <p align="right">
-  <em>Morse Code <span style="letter-spacing: 2px;">..- ._</span> 📟</em>
+  <em>Morse Code <span style="letter-spacing: 2px;">..- ._</span></em> 📟
 </p>
