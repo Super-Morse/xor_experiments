@@ -50,5 +50,6 @@ The script will automatically perform a progressive search across multiple key l
 - **Space Complexity:** $O(M)$ where $M$ represents verified printable matches, ensuring near-zero heap memory overhead due to heuristic stream pruning.
 
 ---
-
-                                                                              *Morse Code ..- ._ 📟*
+<p align="right">
+  <em>Morse Code <span style="letter-spacing: 2px;">..- ._</span> 📟</em>
+</p>
